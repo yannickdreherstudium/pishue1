@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.RadioButton?>
+<?import javafx.scene.control.TextArea?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.control.ToggleGroup?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.text.Text?>
+
+<VBox prefHeight="240.0" prefWidth="640.0" xmlns="http://javafx.com/javafx/8.0.141" xmlns:fx="http://javafx.com/fxml/1">
+  <children>
+    <AnchorPane maxHeight="-1.0" maxWidth="-1.0" prefHeight="277.0" prefWidth="640.0" VBox.vgrow="ALWAYS">
+      <children>
+            <TextArea fx:id="klartext" layoutX="33.0" layoutY="30.0" prefHeight="101.0" prefWidth="277.0" />
+            <Text layoutX="33.0" layoutY="27.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Klartext:" />
+            <Text id="geheimtext" layoutX="320.0" layoutY="27.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Geheimtext:" />
+            <TextArea fx:id="geheimtext" layoutX="320.0" layoutY="30.0" prefHeight="101.0" prefWidth="277.0" />
+            <TextField fx:id="lwort1" layoutX="33.0" layoutY="163.0" />
+            <TextField fx:id="lwort2" layoutX="203.0" layoutY="163.0" />
+            <Text layoutX="33.0" layoutY="152.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Lösungswörter:" />
+            <Button fx:id="verschluesseln" layoutX="32.0" layoutY="202.0" mnemonicParsing="false" onAction="#startverschluesseln" text="Verschlüsseln" />
+            <Button fx:id="entschluesseln" layoutX="136.0" layoutY="202.0" mnemonicParsing="false" onAction="#startentschluesseln" text="Entschlüssseln" />
+            <RadioButton fx:id="caesar" layoutX="383.0" layoutY="167.0" mnemonicParsing="false" text="Caesar">
+               <toggleGroup>
+                  <ToggleGroup fx:id="A" />
+               </toggleGroup>
+            </RadioButton>
+            <RadioButton fx:id="doppelwuerfel" layoutX="459.0" layoutY="167.0" mnemonicParsing="false" selected="true" text="Doppelwürfel" toggleGroup="$A" />
+            <Text layoutX="537.0" layoutY="231.0" strokeType="OUTSIDE" strokeWidth="0.0" text="by Yannick Dreher" />
+            <TextField fx:id="errorfield" editable="false" layoutX="250.0" layoutY="200.0" opacity="0.0" prefHeight="25.0" prefWidth="263.0" />
+      </children>
+    </AnchorPane>
+  </children>
+</VBox>
