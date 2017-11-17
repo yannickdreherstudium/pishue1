@@ -7,13 +7,21 @@ import javafx.scene.control.TextArea;
  * @author Yannick Dreher 5155125
  *
  */
-public class codecgui {
+public class Codecgui {
 	@FXML
 	TextArea klartext;
 	@FXML
+	TextArea geheimtext;
+	@FXML
 	Button verschluesseln;
 	@FXML
-	protected void buttonPressd() {
+	Button entschluesseln;
+	@FXML
+	private void startverschluesseln() {
 		klartext.clear();
+	}
+	@FXML
+	private void startentschluesseln() {
+		geheimtext.clear();
 	}
 }
