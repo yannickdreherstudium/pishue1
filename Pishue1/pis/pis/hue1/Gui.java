@@ -9,7 +9,7 @@ import javafx.stage.Stage;
  * @author Yannick Dreher 5155125
  *
  */
-public class alteGui extends Application{
+public class Gui extends Application{
 
 	public static void main(String[] args) {
 		launch("test");
@@ -22,7 +22,7 @@ public class alteGui extends Application{
 		stage.setScene(scene);
 		stage.setTitle("PiS Hue1");
 		stage.show();
-		
+//		
 	}
 
 }
