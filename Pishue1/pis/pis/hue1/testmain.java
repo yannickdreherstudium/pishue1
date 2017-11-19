@@ -4,8 +4,9 @@ public class testmain {
 
 	public static void main(String[] args) {
 //		test("Notebook","hallodashieristeinlangerbeispieltextumdasverfahrenzuzeigen");
-		System.out.println(caeser("abcxyz ABCXYZ 09!.", "T"));
+//		System.out.println(caeser("abcxyz ABCXYZ 09!.", "T"));
 		System.out.println(caeser2(caeser("abcxyz ABCXYZ 09!.", "T"), "T"));
+//		System.out.print('A'+0);
 	}
 	public static void test(String schluessel, String klartext) {
 		int place = 0;

@@ -19,7 +19,7 @@ public class Caesar implements Codec {
 					temp-=26;
 				}
 			}else {
-				if(klartext.charAt(i)>=66&&klartext.charAt(i)<=90){
+				if(klartext.charAt(i)>=65&&klartext.charAt(i)<=90){
 					temp=(char) (klartext.charAt(i)+shift);
 					if(temp>90) {
 						temp-=26;

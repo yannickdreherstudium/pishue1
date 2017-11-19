@@ -54,7 +54,7 @@ public class CodecGui {
 				}else {
 					c3.setzeLoesung(lwort2.toString());
 				}				
-				geheimtext.setText(c3.kodiere(klartext.toString()));
+				geheimtext.setText(c3.kodiere(klartext.getText()));
 			}
 		} catch (IllegalArgumentException e) {
 			errorlabel.setOpacity(1.0);
