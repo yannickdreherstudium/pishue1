@@ -10,27 +10,29 @@
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Text?>
 
-<VBox prefHeight="240.0" prefWidth="640.0" xmlns:fx="http://javafx.com/fxml/1" fx:controller="pis.hue1.CodecGui">
+<VBox prefHeight="126.0" prefWidth="900.0" xmlns:fx="http://javafx.com/fxml/1" fx:controller="pis.hue1.CodecGui">
   <children>
-    <AnchorPane maxHeight="-1.0" maxWidth="-1.0" prefHeight="277.0" prefWidth="640.0" VBox.vgrow="ALWAYS">
+    <AnchorPane maxHeight="-1.0" maxWidth="-1.0" prefHeight="210.0" prefWidth="900.0" VBox.vgrow="ALWAYS">
       <children>
-            <TextArea fx:id="klartext" layoutX="33.0" layoutY="30.0" prefHeight="101.0" prefWidth="277.0" />
-            <Text layoutX="33.0" layoutY="27.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Klartext:" />
-            <Text id="geheimtext" layoutX="320.0" layoutY="27.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Geheimtext:" />
-            <TextArea fx:id="geheimtext" layoutX="320.0" layoutY="30.0" prefHeight="101.0" prefWidth="277.0" />
-            <TextField fx:id="lwort1" layoutX="33.0" layoutY="163.0" />
-            <TextField fx:id="lwort2" layoutX="203.0" layoutY="163.0" />
-            <Text layoutX="33.0" layoutY="152.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Lösungswörter:" />
-            <Button fx:id="verschluesseln" layoutX="32.0" layoutY="202.0" mnemonicParsing="false" onAction="#startverschluesseln" text="Verschlüsseln" />
-            <Button fx:id="entschluesseln" layoutX="136.0" layoutY="202.0" mnemonicParsing="false" onAction="#startentschluesseln" text="Entschlüssseln" />
-            <RadioButton fx:id="caesar" layoutX="383.0" layoutY="167.0" mnemonicParsing="false" text="Caesar">
+            <TextArea fx:id="klartext" layoutX="14.0" layoutY="30.0" prefHeight="70.0" prefWidth="400.0" />
+            <Text layoutX="14.0" layoutY="26.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Klartext:" />
+            <Text id="geheimtext" layoutX="484.0" layoutY="26.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Geheimtext:" />
+            <TextArea fx:id="geheimtext" layoutX="484.0" layoutY="30.0" prefHeight="70.0" prefWidth="400.0" />
+            <TextField fx:id="lwort1" layoutX="16.0" layoutY="154.0" prefHeight="25.0" prefWidth="208.0" />
+            <TextField fx:id="lwort2" layoutX="327.0" layoutY="155.0" prefHeight="25.0" prefWidth="208.0" />
+            <Text layoutX="16.0" layoutY="150.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Lösungswörter:" />
+            <Button fx:id="verschluesseln" layoutX="792.0" layoutY="125.0" mnemonicParsing="false" onAction="#startverschluesseln" text="Verschlüsseln" />
+            <Button fx:id="entschluesseln" layoutX="790.0" layoutY="167.0" mnemonicParsing="false" onAction="#startentschluesseln" text="Entschlüssseln" />
+            <RadioButton fx:id="caesar" layoutX="627.0" layoutY="129.0" mnemonicParsing="false" text="Caesar">
                <toggleGroup>
                   <ToggleGroup fx:id="A" />
                </toggleGroup>
             </RadioButton>
-            <RadioButton fx:id="doppelwuerfel" layoutX="459.0" layoutY="167.0" mnemonicParsing="false" selected="true" text="Doppelwürfel" toggleGroup="$A" />
-            <Text layoutX="537.0" layoutY="231.0" strokeType="OUTSIDE" strokeWidth="0.0" text="by Yannick Dreher" />
-            <Label fx:id="errorlabel" layoutX="244.0" layoutY="206.0" opacity="0.0" prefHeight="17.0" prefWidth="355.0" />
+            <RadioButton fx:id="doppelwuerfel" layoutX="627.0" layoutY="171.0" mnemonicParsing="false" selected="true" text="Doppelwürfel" toggleGroup="$A" />
+            <Text layoutX="788.0" layoutY="211.0" strokeType="OUTSIDE" strokeWidth="0.0" text="by Yannick Dreher" />
+            <Label fx:id="errorlabel" layoutX="14.0" layoutY="190.0" opacity="0.0" prefHeight="17.0" prefWidth="525.0" />
+            <Button layoutX="428.0" layoutY="53.0" mnemonicParsing="false" onAction="#swaptext" text="Swap" />
+            <Button layoutX="251.0" layoutY="154.0" mnemonicParsing="false" onAction="#swapwort" text="Swap" />
       </children>
     </AnchorPane>
   </children>

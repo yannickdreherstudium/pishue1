@@ -22,7 +22,6 @@ public class Gui extends Application{
 		stage.setScene(scene);
 		stage.setTitle("PiS Hue1");
 		stage.show();
-//		
 	}
 
 }

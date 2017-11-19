@@ -45,13 +45,16 @@ public class CodecGui {
 		errorlabel.setOpacity(0.0);
 		try {
 			if(doppelwuerfel.isSelected()) {
-				c1.setzeLoesung(lwort1.toString());
-				c2.setzeLoesung(lwort2.toString());
-				geheimtext.setText(c2.kodiere(c1.kodiere(klartext.toString())));
+				c1.setzeLoesung(lwort1.getText());
+				c2.setzeLoesung(lwort2.getText());
+				geheimtext.setText(c2.kodiere(c1.kodiere(klartext.getText())));
 			}else {
-				c2.setzeLoesung(lwort1.toString());
-				c2.kodiere(klartext.toString());
-				geheimtext.setText(c2.gibLoesung());
+				if(lwort1!=null) {
+					c3.setzeLoesung(lwort1.toString());
+				}else {
+					c3.setzeLoesung(lwort2.toString());
+				}				
+				geheimtext.setText(c3.kodiere(klartext.toString()));
 			}
 		} catch (IllegalArgumentException e) {
 			errorlabel.setOpacity(1.0);
@@ -71,6 +74,19 @@ public class CodecGui {
 			errorlabel.setOpacity(1.0);
 			errorlabel.setText("Das ist keine gute Eingabe");
 		}
+	}
+	@FXML
+	private void swaptext() {
+		String swap = klartext.getText();
+		klartext.setText(geheimtext.getText());
+		geheimtext.setText(swap);
+		
+	}
+	@FXML
+	private void swapwort() {
+		String swap = lwort1.getText();
+		lwort1.setText(lwort2.getText());
+		lwort2.setText(swap);
 	}
 
 }

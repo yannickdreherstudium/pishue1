@@ -10,7 +10,7 @@ package pis.hue1;
 interface Codec {
 	public String kodiere(String klartext);
 	public String dekodiere(String geheimtext);
-	public String gibLoesung();
+	public String gibLosung();
 	public void setzeLoesung(String schluessel)throws IllegalArgumentException;
 	
 }
