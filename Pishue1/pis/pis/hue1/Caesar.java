@@ -1,15 +1,11 @@
-/**
- * 
- */
 package pis.hue1;
 
 /**
  * @author Yannick Dreher 5155125
  *
  */
-public class Wuerfel implements Codec {
-	static String errormsg ="Das ist kein geeigneter Schlüssel";
-	
+public class Caesar implements Codec {
+
 	@Override
 	public String kodiere(String klartext) {
 		// TODO Auto-generated method stub
@@ -30,10 +26,8 @@ public class Wuerfel implements Codec {
 
 	@Override
 	public void setzeLoesung(String schluessel) throws IllegalArgumentException {
+		// TODO Auto-generated method stub
 
 	}
-
-	
-	
 
 }

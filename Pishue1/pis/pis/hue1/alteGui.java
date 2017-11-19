@@ -9,11 +9,10 @@ import javafx.stage.Stage;
  * @author Yannick Dreher 5155125
  *
  */
-public class Gui extends Application{
+public class alteGui extends Application{
 
 	public static void main(String[] args) {
-		launch(args);
-
+		launch("test");
 	}
 
 	@Override
@@ -21,6 +20,7 @@ public class Gui extends Application{
 		Pane root = (Pane) FXMLLoader.load(getClass().getResource("gui.fxml"));
 		Scene scene = new Scene(root);
 		stage.setScene(scene);
+		stage.setTitle("PiS Hue1");
 		stage.show();
 		
 	}
