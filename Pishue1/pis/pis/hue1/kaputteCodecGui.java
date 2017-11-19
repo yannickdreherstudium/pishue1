@@ -1,16 +1,22 @@
 package pis.hue1;
+
+import javafx.application.Application;
+import javafx.fxml.FXMLLoader;
+import javafx.scene.Scene;
+import javafx.scene.layout.Pane;
+import javafx.stage.Stage;
 import javafx.fxml.FXML;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.control.RadioButton;
 import javafx.scene.control.TextArea;
 import javafx.scene.control.TextField;
-
 /**
  * @author Yannick Dreher 5155125
- *  fx:controller="pis.hue1.Codecgui"
+ *
  */
-public class altecodecgui {
+public class CodecGui extends Application{
+
 	Codec c1 = new Wuerfel();
 	Codec c2 = new Caesar();
 	
@@ -53,4 +59,19 @@ public class altecodecgui {
 		errorlabel.setOpacity(0.0);
 		geheimtext.clear();
 	}
+	
+	public static void main(String[] args) {
+		launch("test");
+	}
+
+	@Override
+	public void start(Stage stage) throws Exception {
+		Pane root = (Pane) FXMLLoader.load(getClass().getResource("gui.fxml"));
+		Scene scene = new Scene(root);
+		stage.setScene(scene);
+		stage.setTitle("PiS Hue1");
+		stage.show();
+		
+	}
+
 }
