@@ -1,47 +1,20 @@
+/**
+ * 
+ */
 package pis.hue1;
 
-import javafx.application.Application;
 import javafx.fxml.FXML;
-import javafx.fxml.FXMLLoader;
-import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.control.RadioButton;
 import javafx.scene.control.TextArea;
 import javafx.scene.control.TextField;
-import javafx.scene.layout.Pane;
-import javafx.stage.Stage;
+
 /**
  * @author Yannick Dreher 5155125
  *
  */
-public class kCodecGui extends Application{
-
-	public static void main(String[] args) {
-		launch("test");
-	}
-
-	@Override
-	public void start(Stage stage) throws Exception {
-		Pane root = (Pane) FXMLLoader.load(getClass().getResource("gui.fxml"));
-		Scene scene = new Scene(root);
-		stage.setScene(scene);
-		stage.setTitle("PiS Hue1");
-		stage.show();
-	}
-	
-//	{
-	private Codec d1, d2;
-	kCodecGui(Codec _c1, Codec _c2){
-		d1=_c1;
-		d2=_c2;
-//	}
-}
-	
-	private Codec c1 = new Wuerfel();
-	private Codec c2 = new Wuerfel();
-	private Codec c3 = new Caesar();
-	
+public class CodecController {
 	@FXML
 	TextArea klartext;
 	@FXML
@@ -61,18 +34,23 @@ public class kCodecGui extends Application{
 	@FXML
 	Button entschluesseln;
 
+	String getklartext() {
+		return klartext.getText();
+	}
+	
+	
+	
 	@FXML
 	private void startverschluesseln() {
 		errorlabel.setOpacity(0.0);
 		try {
 			if(doppelwuerfel.isSelected()) {
-				c1.setzeLoesung(lwort1.getText());
-				c2.setzeLoesung(lwort2.getText());
-				geheimtext.setText(c2.kodiere(c1.kodiere(klartext.getText())));
+				CodecGui prozess = new CodecGui(new Wuerfel(lwort1.getText()), new Wuerfel(lwort2.getText()));
+				geheimtext.setText(prozess.kodiere(klartext.getText()));
 			}else {
 				if(lwort1!=null) {
-					c3.setzeLoesung(lwort1.getText());			
-				geheimtext.setText(c3.kodiere(klartext.getText()));
+					CodecGui prozess = new CodecGui(new Caesar(lwort1.getText()), null);
+					geheimtext.setText(prozess.kodiere(klartext.getText()));
 				}
 			}
 		} catch (IllegalArgumentException e) {
@@ -85,12 +63,11 @@ public class kCodecGui extends Application{
 		errorlabel.setOpacity(0.0);
 		try {
 			if(doppelwuerfel.isSelected()) {
-				c1.setzeLoesung(lwort1.getText());
-				c2.setzeLoesung(lwort2.getText());
-				klartext.setText(c2.dekodiere(c1.dekodiere(geheimtext.getText())));
+				CodecGui prozess = new CodecGui(new Wuerfel(lwort1.getText()), new Wuerfel(lwort2.getText()));
+				klartext.setText(prozess.dekodiere(klartext.getText()));
 			}else {
-				c3.setzeLoesung(lwort1.getText());
-				klartext.setText(c3.dekodiere(geheimtext.getText()));
+				CodecGui prozess = new CodecGui(new Caesar(lwort1.getText()), null);
+				klartext.setText(prozess.dekodiere(klartext.getText()));
 			}
 		} catch (IllegalArgumentException e) {
 			errorlabel.setOpacity(1.0);
@@ -128,7 +105,5 @@ public class kCodecGui extends Application{
 		lwort2.setEditable(true);
 		lwort2.setDisable(false);
 	}
-	
-
 
 }

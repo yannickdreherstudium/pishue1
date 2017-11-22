@@ -10,6 +10,10 @@ package pis.hue1;
 public class Wuerfel implements Codec {
 	String loesung;
 	
+	public Wuerfel(String schluessel) {
+		setzeLoesung(schluessel);
+	}
+
 	@Override
 	public String kodiere(String klartext) {
 		String schluessel = this.gibLosung();

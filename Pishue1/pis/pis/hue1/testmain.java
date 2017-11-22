@@ -60,7 +60,6 @@ public class testmain {
 		}
 		System.out.println(ausgabe);
 	}
-
 	public static String caeser(String klartext, String sh) {
 		int shift = sh.length();
 		String ausgabe="";
