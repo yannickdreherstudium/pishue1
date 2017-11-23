@@ -51,9 +51,9 @@ public class Caesar implements Codec {
 					temp+=26;
 				}
 			}else {
-				if(geheimtext.charAt(i)>=66&&geheimtext.charAt(i)<=90){
+				if(geheimtext.charAt(i)>=65&&geheimtext.charAt(i)<=90){
 					temp=(char) (geheimtext.charAt(i)-shift);
-					if(temp<66) {
+					if(temp<65) {
 						temp+=26;
 					}
 				}else {

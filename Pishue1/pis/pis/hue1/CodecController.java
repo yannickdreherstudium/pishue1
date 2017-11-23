@@ -33,12 +33,6 @@ public class CodecController {
 	Button verschluesseln;
 	@FXML
 	Button entschluesseln;
-
-	String getklartext() {
-		return klartext.getText();
-	}
-	
-	
 	
 	@FXML
 	private void startverschluesseln() {

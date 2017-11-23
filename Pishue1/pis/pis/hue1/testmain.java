@@ -4,8 +4,8 @@ public class testmain {
 
 	public static void main(String[] args) {
 //		test("Notebook","hallodashieristeinlangerbeispieltextumdasverfahrenzuzeigen");
-//		System.out.println(caeser("abcxyz ABCXYZ 09!.", "T"));
-		System.out.println(caeser2(caeser("abcxyz ABCXYZ 09!.", "T"), "T"));
+		System.out.println(caeser("abcxyz ABCXYZ 09!.", "THM"));
+		System.out.println(caeser2(caeser("abcxyz ABCXYZ 09!.", "THM"), "THM"));
 //		System.out.print('A'+0);
 	}
 	public static void test(String schluessel, String klartext) {
@@ -71,7 +71,7 @@ public class testmain {
 					temp-=26;
 				}
 			}else {
-				if(klartext.charAt(i)>=66&&klartext.charAt(i)<=90){
+				if(klartext.charAt(i)>=65&&klartext.charAt(i)<=90){
 					temp=(char) (klartext.charAt(i)+shift);
 					if(temp>90) {
 						temp-=26;
@@ -97,9 +97,9 @@ public class testmain {
 					temp+=26;
 				}
 			}else {
-				if(geheimtext.charAt(i)>=66&&geheimtext.charAt(i)<=90){
+				if(geheimtext.charAt(i)>=65&&geheimtext.charAt(i)<=90){
 					temp=(char) (geheimtext.charAt(i)-shift);
-					if(temp<66) {
+					if(temp<65) {
 						temp+=26;
 					}
 				}else {
