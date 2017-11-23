@@ -30,8 +30,6 @@
             </RadioButton>
             <RadioButton fx:id="doppelwuerfel" layoutX="627.0" layoutY="171.0" mnemonicParsing="false" onAction="#switchdoppel" selected="true" text="Doppelwuerfel" toggleGroup="$A" />
             <Text layoutX="788.0" layoutY="211.0" strokeType="OUTSIDE" strokeWidth="0.0" text="by Yannick Dreher" />
-            <Button layoutX="369.0" layoutY="78.0" mnemonicParsing="false" onAction="#clearklartext" opacity="0.3" prefHeight="6.0" prefWidth="45.0" text="clear" />
-            <Button layoutX="841.0" layoutY="78.0" mnemonicParsing="false" onAction="#cleargeheimtext" opacity="0.3" prefHeight="6.0" prefWidth="45.0" text="clear" />
       </children>
     </AnchorPane>
   </children>
