@@ -19,13 +19,13 @@ public class Caesar implements Codec {
 		for(int i = 0 ; i<klartext.length() ; i++) {
 			if((klartext.charAt(i)>=97)&&(klartext.charAt(i)<=122)) {
 				temp=(char) (klartext.charAt(i)+shift);
-				if(temp>122) {
+				while(temp>122) {
 					temp-=26;
 				}
 			}else {
 				if(klartext.charAt(i)>=65&&klartext.charAt(i)<=90){
 					temp=(char) (klartext.charAt(i)+shift);
-					if(temp>90) {
+					while(temp>90) {
 						temp-=26;
 					}
 				}else {

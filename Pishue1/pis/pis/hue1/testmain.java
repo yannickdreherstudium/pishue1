@@ -4,9 +4,10 @@ public class testmain {
 
 	public static void main(String[] args) {
 //		test("Notebook","hallodashieristeinlangerbeispieltextumdasverfahrenzuzeigen");
-		System.out.println(caeser("abcxyz ABCXYZ 09!.", "THM"));
-		System.out.println(caeser2(caeser("abcxyz ABCXYZ 09!.", "THM"), "THM"));
+//		System.out.println(caeser("abcxyz ABCXYZ 09!.", "THM"));
+//		System.out.println(caeser2(caeser("abcxyz ABCXYZ 09!.", "THM"), "THM"));
 //		System.out.print('A'+0);
+		entschluesseln();
 	}
 	public static void test(String schluessel, String klartext) {
 		int place = 0;
@@ -112,6 +113,79 @@ public class testmain {
 		
 		return ausgabe;
 	}
+	public static void entschluesseln() {
+		String geheimtext = "NRSGSESAIEOZRABINADIILURTNDEHXUSRHEVIEEPAEHEEGTLZFTLIANMEL";
+		String schluessel = "Deckel";
+		String[][] matrix = new String[geheimtext.length()/schluessel.length()+2][schluessel.length()];
+		
+		int place = 0;
+		for(char charplace = 'a'; charplace!='z'+1; charplace++) {
+			for(int i=0; i<(schluessel.length()); i++) {
+				if(schluessel.toLowerCase().charAt(i) ==(charplace)) {
+					matrix[0][i]= place+"";
+					place++;
+					}
+				}
+		}
+		int empty = ((geheimtext.length()/schluessel.length())+1)*schluessel.length()-geheimtext.length();
+		for(int i = 0 ; i<empty ; i++) {
+			matrix[geheimtext.length()/schluessel.length()+1][schluessel.length()-i-1] = "leer";
+		}
+		
+		int zeile = 1;
+		int i=0;
+		int emptycount=0;
+		while (i<geheimtext.length()) {
+			for (int j = 0; j< (geheimtext.length()/schluessel.length())+2; j++) { // j: die Aktuelle spaltezeiger
+				for(place = 0; place<schluessel.length(); place++) { //place ist die zu durchsuchende spalte
+					if(Integer.parseInt(matrix[0][place])==j) { // falls der aktuelle zeiger auf der aktuell durchsuchten spalte ist, wird diese spalte befüllt
+						while(i<((geheimtext.length()/schluessel.length())+1)*(j+1)-emptycount) { 
+							/* 
+							 * die abruchbedingung, sobald die spalte voll ist
+							 * nämlich soll die aktuelle buchstabenanzahl kleiner als die spaltenanzahl mal die aktuelle spalte
+							 * allerdings muss noch die anzhal der bisher freigelassen Zahlen abgezogen werden, da dort ja kein Buchstabe gesetzt wurde,
+							 * da diese ja frei beliben mussten und wir keineen Buchstaben verlieren
+							 */
+							if(matrix[zeile][place]!= "leer") { // und zwar nur, wenn das aktuelle feld nicht leer ist 
+								matrix[zeile][place] = "" + geheimtext.charAt(i);
+								zeile++;
+								i++;
+								if(zeile==(geheimtext.length()/schluessel.length())+2) {
+									zeile = 1;
+									place++;
+								}
+							}else {
+							zeile = 1;
+							place++;
+							emptycount++;
+							break;
+							}
+						}
+					}
+				}
+			}
+		}
+		
+		String ausgabe = "";
+		for(int j =1 ; j<(geheimtext.length()/schluessel.length())+2  ; j++) {
+			for(int k = 0 ; k< schluessel.length() ; k++) {
+				if(matrix[j][k].equals("leer"))continue;
+				ausgabe = ausgabe +matrix[j][k];
+			}
+		}
+		System.out.println(ausgabe);
+		
+		
+		
 
+		
+		
+		for(int j = 0 ; j<(geheimtext.length()/schluessel.length()+2) ; j++) {
+			for(int k=0; k<schluessel.length();k++) {
+				System.out.print(matrix[j][k]+" ");
+			}
+			System.out.print("\n");
+		}
+	}
 }
    

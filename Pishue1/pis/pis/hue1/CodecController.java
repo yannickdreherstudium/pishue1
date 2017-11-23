@@ -36,36 +36,41 @@ public class CodecController {
 	
 	@FXML
 	private void startverschluesseln() {
-		errorlabel.setOpacity(0.0);
 		try {
-			if(doppelwuerfel.isSelected()) {
-				CodecGui prozess = new CodecGui(new Wuerfel(lwort1.getText()), new Wuerfel(lwort2.getText()));
-				geheimtext.setText(prozess.kodiere(klartext.getText()));
-			}else {
-				if(lwort1!=null) {
-					CodecGui prozess = new CodecGui(new Caesar(lwort1.getText()), null);
+			if(klartext.getText() != null && lwort1.getText() != null) {
+				if(doppelwuerfel.isSelected() && lwort2.getText() != null) {
+					CodecGui prozess = new CodecGui(new Wuerfel(lwort1.getText()), new Wuerfel(lwort2.getText()));
 					geheimtext.setText(prozess.kodiere(klartext.getText()));
+				}else {
+						CodecGui prozess = new CodecGui(new Caesar(lwort1.getText()), null);
+						geheimtext.setText(prozess.kodiere(klartext.getText()));
 				}
+			}else {
+				throw new IllegalArgumentException("Da ist eine leere Eingabe");
 			}
+			
 		} catch (IllegalArgumentException e) {
 			errorlabel.setOpacity(1.0);
-			errorlabel.setText("Das ist keine gute Eingabe");
+			errorlabel.setText(e.getMessage());
 		}
 	}
 	@FXML
 	private void startentschluesseln() {
-		errorlabel.setOpacity(0.0);
 		try {
-			if(doppelwuerfel.isSelected()) {
-				CodecGui prozess = new CodecGui(new Wuerfel(lwort1.getText()), new Wuerfel(lwort2.getText()));
-				klartext.setText(prozess.dekodiere(klartext.getText()));
+			if(klartext.getText() != null && lwort1.getText() != null ) {	
+				if(doppelwuerfel.isSelected() && lwort2.getText() != null) {
+					CodecGui prozess = new CodecGui(new Wuerfel(lwort1.getText()), new Wuerfel(lwort2.getText()));
+					klartext.setText(prozess.dekodiere(geheimtext.getText()));
+				}else {
+					CodecGui prozess = new CodecGui(new Caesar(lwort1.getText()), null);
+					klartext.setText(prozess.dekodiere(geheimtext.getText()));
+				}
 			}else {
-				CodecGui prozess = new CodecGui(new Caesar(lwort1.getText()), null);
-				klartext.setText(prozess.dekodiere(klartext.getText()));
+				throw new IllegalArgumentException("Da ist eine leere Eingabe");
 			}
 		} catch (IllegalArgumentException e) {
 			errorlabel.setOpacity(1.0);
-			errorlabel.setText("Das ist keine gute Eingabe");
+			errorlabel.setText(e.getMessage());
 		}
 	}
 	@FXML
