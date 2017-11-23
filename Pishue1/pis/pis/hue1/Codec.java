@@ -1,6 +1,3 @@
-/**
- * 
- */
 package pis.hue1;
 
 /**

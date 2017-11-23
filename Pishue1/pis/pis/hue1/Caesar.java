@@ -4,7 +4,7 @@ package pis.hue1;
  * @author Yannick Dreher 5155125
  *
  */
-public class Caesar implements Codec {
+public final class Caesar implements Codec {
 	String loesung;
 
 	public Caesar(String shift) {
@@ -38,7 +38,6 @@ public class Caesar implements Codec {
 		
 		return ausgabe;
 	}
-	//klappt nich nicht!
 	@Override
 	public String dekodiere(String geheimtext) {
 		int shift = this.loesung.length();

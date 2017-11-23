@@ -1,11 +1,10 @@
-/**
- * 
- */
 package pis.hue1;
 
+import java.util.regex.Pattern;
+
 import javafx.fxml.FXML;
+import javafx.scene.control.Alert;
 import javafx.scene.control.Button;
-import javafx.scene.control.Label;
 import javafx.scene.control.RadioButton;
 import javafx.scene.control.TextArea;
 import javafx.scene.control.TextField;
@@ -14,7 +13,7 @@ import javafx.scene.control.TextField;
  * @author Yannick Dreher 5155125
  *
  */
-public class CodecController {
+public final class CodecController {
 	@FXML
 	TextArea klartext;
 	@FXML
@@ -28,64 +27,78 @@ public class CodecController {
 	@FXML
 	RadioButton doppelwuerfel;
 	@FXML
-	Label errorlabel;
-	@FXML
 	Button verschluesseln;
 	@FXML
 	Button entschluesseln;
 	
+	
 	@FXML
 	private void startverschluesseln() {
 		try {
-			if(klartext.getText() != null && lwort1.getText() != null) {
-				if(doppelwuerfel.isSelected() && lwort2.getText() != null) {
-					CodecGui prozess = new CodecGui(new Wuerfel(lwort1.getText()), new Wuerfel(lwort2.getText()));
-					geheimtext.setText(prozess.kodiere(klartext.getText()));
-				}else {
-						CodecGui prozess = new CodecGui(new Caesar(lwort1.getText()), null);
-						geheimtext.setText(prozess.kodiere(klartext.getText()));
-				}
+			if(klartext.getText().isEmpty() == false && doppelwuerfel.isSelected()) {
+				teste(lwort1.getText());
+				teste(lwort2.getText());						
+				CodecGui prozess = new CodecGui(new Wuerfel(lwort1.getText()), new Wuerfel(lwort2.getText()));
+				geheimtext.setText(prozess.kodiere(klartext.getText()));				
 			}else {
-				throw new IllegalArgumentException("Da ist eine leere Eingabe");
-			}
-			
+				if(klartext.getText().isEmpty() == false && caesar.isSelected()) {
+					teste(lwort1.getText());
+					CodecGui prozess = new CodecGui(new Caesar(lwort1.getText()), null);
+					geheimtext.setText(prozess.kodiere(klartext.getText()));
+				}else{
+					throw new IllegalArgumentException("Da ist eine leere Eingabe");
+				}
+			}	
 		} catch (IllegalArgumentException e) {
-			errorlabel.setOpacity(1.0);
-			errorlabel.setText(e.getMessage());
+			error(e.getMessage());
 		}
 	}
 	@FXML
 	private void startentschluesseln() {
-		try {
-			if(klartext.getText() != null && lwort1.getText() != null ) {	
-				if(doppelwuerfel.isSelected() && lwort2.getText() != null) {
+		try {	
+			if(doppelwuerfel.isSelected() && geheimtext.getText().isEmpty() == false) {
+					teste(lwort1.getText());
+					teste(lwort2.getText());						
 					CodecGui prozess = new CodecGui(new Wuerfel(lwort1.getText()), new Wuerfel(lwort2.getText()));
 					klartext.setText(prozess.dekodiere(geheimtext.getText()));
-				}else {
-					CodecGui prozess = new CodecGui(new Caesar(lwort1.getText()), null);
-					klartext.setText(prozess.dekodiere(geheimtext.getText()));
-				}
 			}else {
-				throw new IllegalArgumentException("Da ist eine leere Eingabe");
+				if(caesar.isSelected()) {
+					CodecGui prozess = new CodecGui(new Caesar(lwort1.getText()), null);
+					klartext.setText(prozess.dekodiere(geheimtext.getText()));				
+				}else {
+					throw new IllegalArgumentException("Da ist eine leere Eingabe");
+				}
 			}
 		} catch (IllegalArgumentException e) {
-			errorlabel.setOpacity(1.0);
-			errorlabel.setText(e.getMessage());
+			error(e.getMessage());
 		}
 	}
-	@FXML
-	private void swaptext() {
-		String swap = klartext.getText();
-		klartext.setText(geheimtext.getText());
-		geheimtext.setText(swap);
+	
+
+	private void error(String error) {
+		Alert alerterror = new Alert(Alert.AlertType.INFORMATION);
+        alerterror.setTitle("Ein Fehler ist aufgetreten");
+        alerterror.setHeaderText(error);
+        alerterror.showAndWait();
+	
+	}
+	
+	private void teste(String loesung) {
+		if(loesung == null || loesung.equals("") || loesung.isEmpty()) {
+			throw new IllegalArgumentException("Das ist keine gutes Schluesselwort");
+		}
+		if(loesung.length()<3) {
+			throw new IllegalArgumentException("Das Schluesselwort ist zu kurz");
+		}
+		char[] _loesung = loesung.toLowerCase().toCharArray();
+		for(int i= 0 ; i<loesung.length() ; i++) {
+			if(Pattern.matches("\\p{Lower}", _loesung[i]+"") == false) {
+				throw new IllegalArgumentException("Du darfst nur Buchstaben in den Schluesseln verwenden!");
+			}
+		}
 		
 	}
-	@FXML
-	private void swapwort() {
-		String swap = lwort1.getText();
-		lwort1.setText(lwort2.getText());
-		lwort2.setText(swap);
-	}
+	
 	@FXML
 	private void clearklartext() {
 		klartext.clear();
@@ -98,6 +111,7 @@ public class CodecController {
 	private void switchcaeser() {
 		lwort2.setEditable(false);
 		lwort2.setDisable(true);
+		lwort2.clear();
 	}
 	@FXML
 	private void switchdoppel() {

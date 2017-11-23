@@ -4,7 +4,7 @@ package pis.hue1;
  * @author Yannick Dreher 5155125
  *  
  */
-public class CodecGui {
+public final class CodecGui {
 	private Codec c1;
 	private Codec c2;
 	

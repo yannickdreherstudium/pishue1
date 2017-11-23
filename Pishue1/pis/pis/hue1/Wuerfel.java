@@ -1,13 +1,10 @@
-/**
- * 
- */
 package pis.hue1;
 
 /**
  * @author Yannick Dreher 5155125
  *
  */
-public class Wuerfel implements Codec {
+public final class Wuerfel implements Codec {
 	String loesung;
 	
 	public Wuerfel(String schluessel) {
@@ -33,7 +30,7 @@ public class Wuerfel implements Codec {
 		place = 0;
 		int spalte = 1;
 		for(int i=0 ; i<klartext.length() ; i++) {
-			matrix[spalte][place] = "" + klartext.charAt(i);
+			matrix[spalte][place] = ""+klartext.charAt(i);
 			place++;
 			if(place==schluessel.length()) {
 				place = 0;
@@ -51,15 +48,15 @@ public class Wuerfel implements Codec {
 				}
 			}
 		}
-		String ausgabe = "";
+		StringBuffer ausgabe = new StringBuffer();
 		for(int i = 0 ; i<schluessel.length() ; i++) {
 			for(int j = 1 ; j< klartext.length()/schluessel.length()+2 ; j++) {
 				if(matrixsort[j][i]!=null) {
-					ausgabe = ausgabe +matrixsort[j][i];
+					ausgabe.append(matrixsort[j][i]);
 				}
 			}
 		}
-		return ausgabe;
+		return ausgabe.toString();
 	}
 
 	@Override
@@ -85,7 +82,7 @@ public class Wuerfel implements Codec {
 		int i=0;
 		int emptycount=0;
 		while (i<geheimtext.length()) {
-			for (int j = 0; j< (geheimtext.length()/schluessel.length())+2; j++) { // j: die Aktuelle spaltezeiger
+			for (int j = 0; j<schluessel.length(); j++) { // j: die Aktuelle spaltezeiger
 				for(place = 0; place<schluessel.length(); place++) { //place ist die zu durchsuchende spalte
 					if(Integer.parseInt(matrix[0][place])==j) { // falls der aktuelle zeiger auf der aktuell durchsuchten spalte ist, wird diese spalte befüllt
 						while(i<((geheimtext.length()/schluessel.length())+1)*(j+1)-emptycount) { 
@@ -115,14 +112,14 @@ public class Wuerfel implements Codec {
 			}
 		}
 		
-		String ausgabe = "";
+		StringBuffer ausgabe = new StringBuffer();
 		for(int j =1 ; j<(geheimtext.length()/schluessel.length())+2  ; j++) {
 			for(int k = 0 ; k< schluessel.length() ; k++) {
 				if(matrix[j][k].equals("leer"))continue;
-				ausgabe = ausgabe +matrix[j][k];
+				ausgabe.append(matrix[j][k]);
 			}
 		}
-		return ausgabe;
+		return ausgabe.toString();
 	}
 
 	@Override

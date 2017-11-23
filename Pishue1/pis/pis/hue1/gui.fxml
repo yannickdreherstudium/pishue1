@@ -20,7 +20,7 @@
             <TextArea fx:id="geheimtext" layoutX="486.0" layoutY="30.0" prefHeight="74.0" prefWidth="400.0" />
             <TextField fx:id="lwort1" layoutX="16.0" layoutY="154.0" prefHeight="25.0" prefWidth="208.0" />
             <TextField fx:id="lwort2" layoutX="327.0" layoutY="155.0" prefHeight="25.0" prefWidth="208.0" />
-            <Text layoutX="16.0" layoutY="150.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Lösungswörter:" />
+            <Text layoutX="16.0" layoutY="150.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Schluesselwoeter:" />
             <Button fx:id="verschluesseln" layoutX="792.0" layoutY="125.0" mnemonicParsing="false" onAction="#startverschluesseln" text="Verschlüsseln" />
             <Button fx:id="entschluesseln" layoutX="790.0" layoutY="167.0" mnemonicParsing="false" onAction="#startentschluesseln" text="Entschlüssseln" />
             <RadioButton fx:id="caesar" layoutX="627.0" layoutY="129.0" mnemonicParsing="false" onAction="#switchcaeser" text="Caesar">
@@ -28,11 +28,8 @@
                   <ToggleGroup fx:id="A" />
                </toggleGroup>
             </RadioButton>
-            <RadioButton fx:id="doppelwuerfel" layoutX="627.0" layoutY="171.0" mnemonicParsing="false" onAction="#switchdoppel" selected="true" text="Doppelwürfel" toggleGroup="$A" />
+            <RadioButton fx:id="doppelwuerfel" layoutX="627.0" layoutY="171.0" mnemonicParsing="false" onAction="#switchdoppel" selected="true" text="Doppelwuerfel" toggleGroup="$A" />
             <Text layoutX="788.0" layoutY="211.0" strokeType="OUTSIDE" strokeWidth="0.0" text="by Yannick Dreher" />
-            <Label fx:id="errorlabel" layoutX="14.0" layoutY="190.0" opacity="0.0" prefHeight="17.0" prefWidth="525.0" />
-            <Button layoutX="428.0" layoutY="53.0" mnemonicParsing="false" onAction="#swaptext" text="Swap" />
-            <Button layoutX="251.0" layoutY="154.0" mnemonicParsing="false" onAction="#swapwort" text="Swap" />
             <Button layoutX="369.0" layoutY="78.0" mnemonicParsing="false" onAction="#clearklartext" opacity="0.3" prefHeight="6.0" prefWidth="45.0" text="clear" />
             <Button layoutX="841.0" layoutY="78.0" mnemonicParsing="false" onAction="#cleargeheimtext" opacity="0.3" prefHeight="6.0" prefWidth="45.0" text="clear" />
       </children>

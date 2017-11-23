@@ -9,7 +9,7 @@ import javafx.stage.Stage;
  * @author Yannick Dreher 5155125
  *
  */
-public class Gui extends Application{
+public final class Gui extends Application{
 
 	public static void main(String[] args) {
 		launch(args);

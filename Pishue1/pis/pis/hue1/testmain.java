@@ -7,7 +7,8 @@ public class testmain {
 //		System.out.println(caeser("abcxyz ABCXYZ 09!.", "THM"));
 //		System.out.println(caeser2(caeser("abcxyz ABCXYZ 09!.", "THM"), "THM"));
 //		System.out.print('A'+0);
-		entschluesseln();
+		System.out.println(entschluesseln(entschluesseln("ndeeelmtsvtrngieedffprugnennsefiteereertoarutn", "Schwenningen"), "schwarzwald"));
+//		System.out.println(entschluesseln("ndeeelmtsvtrngieedffprugnennsefiteereertoarutn", "schwenningen"));
 	}
 	public static void test(String schluessel, String klartext) {
 		int place = 0;
@@ -113,9 +114,9 @@ public class testmain {
 		
 		return ausgabe;
 	}
-	public static void entschluesseln() {
-		String geheimtext = "NRSGSESAIEOZRABINADIILURTNDEHXUSRHEVIEEPAEHEEGTLZFTLIANMEL";
-		String schluessel = "Deckel";
+	public static String entschluesseln(String geheimtext, String schluessel) {
+//		String geheimtext = "NRSGSESAIEOZRABINADIILURTNDEHXUSRHEVIEEPAEHEEGTLZFTLIANMEL";
+//		String schluessel = "Deckel";
 		String[][] matrix = new String[geheimtext.length()/schluessel.length()+2][schluessel.length()];
 		
 		int place = 0;
@@ -131,12 +132,17 @@ public class testmain {
 		for(int i = 0 ; i<empty ; i++) {
 			matrix[geheimtext.length()/schluessel.length()+1][schluessel.length()-i-1] = "leer";
 		}
-		
+//		for(int j = 0 ; j<(geheimtext.length()/schluessel.length()+2) ; j++) {
+//			for(int k=0; k<schluessel.length();k++) {
+//				System.out.print(matrix[j][k]+" ");
+//			}
+//			System.out.print("\n");
+//		}
 		int zeile = 1;
 		int i=0;
 		int emptycount=0;
 		while (i<geheimtext.length()) {
-			for (int j = 0; j< (geheimtext.length()/schluessel.length())+2; j++) { // j: die Aktuelle spaltezeiger
+			for (int j = 0; j< schluessel.length(); j++) { // j: die Aktuelle spaltezeiger
 				for(place = 0; place<schluessel.length(); place++) { //place ist die zu durchsuchende spalte
 					if(Integer.parseInt(matrix[0][place])==j) { // falls der aktuelle zeiger auf der aktuell durchsuchten spalte ist, wird diese spalte befüllt
 						while(i<((geheimtext.length()/schluessel.length())+1)*(j+1)-emptycount) { 
@@ -150,6 +156,8 @@ public class testmain {
 								matrix[zeile][place] = "" + geheimtext.charAt(i);
 								zeile++;
 								i++;
+//								System.out.println(matrix[zeile-1][place]+" "+geheimtext.charAt(i-1)+" "+i+"   ");
+								
 								if(zeile==(geheimtext.length()/schluessel.length())+2) {
 									zeile = 1;
 									place++;
@@ -163,29 +171,34 @@ public class testmain {
 						}
 					}
 				}
+//				for(int h = 0 ; h<(geheimtext.length()/schluessel.length()+2) ; h++) {
+//					for(int k=0; k<schluessel.length();k++) {
+//						System.out.print(matrix[h][k]+" ");
+//					}
+//					System.out.print("\n");
+//				}
 			}
 		}
 		
-		String ausgabe = "";
+//		for(int j = 0 ; j<(geheimtext.length()/schluessel.length()+2) ; j++) {
+//			for(int k=0; k<schluessel.length();k++) {
+//				System.out.print(matrix[j][k]+" ");
+//			}
+//			System.out.print("\n");
+//		}
+		
+		StringBuffer ausgabe = new StringBuffer();
 		for(int j =1 ; j<(geheimtext.length()/schluessel.length())+2  ; j++) {
 			for(int k = 0 ; k< schluessel.length() ; k++) {
 				if(matrix[j][k].equals("leer"))continue;
-				ausgabe = ausgabe +matrix[j][k];
+				ausgabe.append(matrix[j][k]);
 			}
 		}
-		System.out.println(ausgabe);
-		
-		
-		
+		return ausgabe.toString();
 
 		
 		
-		for(int j = 0 ; j<(geheimtext.length()/schluessel.length()+2) ; j++) {
-			for(int k=0; k<schluessel.length();k++) {
-				System.out.print(matrix[j][k]+" ");
-			}
-			System.out.print("\n");
-		}
+		
 	}
 }
    
