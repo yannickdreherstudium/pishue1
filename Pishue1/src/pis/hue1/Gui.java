@@ -20,7 +20,9 @@ public final class Gui extends Application{
 	 * @param args  uebergabe
 	 */
 	public static void main(String[] args) {
-		launch(args);
+//		launch(args);
+		mynewCodecGui.createGUI();
+		
 	}
 	/**
 	 * Die start Methode inizialisiert die JavaFX Benutzeroberflaeche

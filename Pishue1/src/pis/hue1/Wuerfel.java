@@ -16,7 +16,7 @@ public final class Wuerfel implements Codec {
 	/** Das Loesungswort, nur Buchstaben von 'A' bis 'Z' und mindestens 3 Zeichen */
 	String loesung;
 	/**
-	 * initialisiert die Klassenvariable loesung
+	 * initialisiert die Klassenvariable loesung  (Objektvariable Klassenattribut)
 	 * @param loesung das Loesungswort
 	 */
 	public Wuerfel(String loesung) {

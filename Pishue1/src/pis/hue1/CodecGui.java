@@ -17,12 +17,15 @@ public final class CodecGui {
 	/**
 	 * initialisiert die Klassenvariablen mit der gewaehlten Verschluesselung
 	 * 
-	 * @param _c1 erstes Objekt
-	 * @param _c2 zweites Objekt
+	 * @param losung1 erstes Objekt
+	 * @param losung2 zweites Objekt
 	 */
-	public CodecGui(Codec _c1, Codec _c2){
-		c1=_c1;
-		c2=_c2;
+	public CodecGui(String losung1, String losung2){
+		c1=new Wuerfel(losung1);
+		c2=new Wuerfel(losung2);
+	}
+	public CodecGui(String losung) {
+		c1= new Caesar(losung);
 	}
 	/**
 	 * ruft die passende Kodiermethode auf
@@ -54,5 +57,6 @@ public final class CodecGui {
 			return c1.dekodiere(c2.dekodiere(geheimtext));
 		}
 	}
+	
 	
 }

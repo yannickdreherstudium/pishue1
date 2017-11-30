@@ -6,7 +6,7 @@ import javafx.scene.control.Button;
 import javafx.scene.control.RadioButton;
 import javafx.scene.control.TextArea;
 import javafx.scene.control.TextField;
-
+// eigen geschriebene Gui, entkopplung, implementierung als 1 dimensionales array
 /**
  * Die Klasse regelt die Felder und Ereinisse aus der Benutzeroberflaeche
  * 
@@ -50,12 +50,12 @@ public final class CodecController {
 	@FXML
 	private void startverschluesseln() {
 		try {
-			if(klartext.getText().isEmpty() == false && doppelwuerfel.isSelected()) {				
-				CodecGui prozess = new CodecGui(new Wuerfel(lwort1.getText()), new Wuerfel(lwort2.getText()));
+			if(klartext.getText().isEmpty() == false && doppelwuerfel.isSelected()) {
+				CodecGui prozess = new CodecGui(lwort1.getText(), lwort2.getText());
 				geheimtext.setText(prozess.kodiere(klartext.getText()));				
 			}else {
 				if(klartext.getText().isEmpty() == false && caesar.isSelected()) {
-					CodecGui prozess = new CodecGui(new Caesar(lwort1.getText()), null);
+					CodecGui prozess = new CodecGui(lwort1.getText());
 					geheimtext.setText(prozess.kodiere(klartext.getText()));
 				}else{
 					throw new IllegalArgumentException("Da ist eine leere Eingabe");
@@ -77,11 +77,11 @@ public final class CodecController {
 	private void startentschluesseln() {
 		try {	
 			if(doppelwuerfel.isSelected() && geheimtext.getText().isEmpty() == false) {						
-					CodecGui prozess = new CodecGui(new Wuerfel(lwort1.getText()), new Wuerfel(lwort2.getText()));
+					CodecGui prozess = new CodecGui(lwort1.getText(),lwort2.getText());
 					klartext.setText(prozess.dekodiere(geheimtext.getText()));
 			}else {
 				if(caesar.isSelected()) {
-					CodecGui prozess = new CodecGui(new Caesar(lwort1.getText()), null);
+					CodecGui prozess = new CodecGui(lwort1.getText());
 					klartext.setText(prozess.dekodiere(geheimtext.getText()));				
 				}else {
 					throw new IllegalArgumentException("Da ist eine leere Eingabe");
